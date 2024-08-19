@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "IC-Flow",
   description: "Organizando a loucura.",
   icons: {
-    icon: "/icons/iclogo.PNG"
+    icon: "/iclogo.PNG"
   }
 };
 
