@@ -8,7 +8,7 @@ const Login = () => {
       <section className='remove-scrollbar container my-auto'>
         <div className='sub-container max-w-[496px]'>
           <Image 
-            src="/icons/iclogobranca.png"
+            src="/icons/iclogobranca.PNG"
             height={1000}
             width={1000}
             alt='iclogo'
@@ -23,7 +23,7 @@ const Login = () => {
         </div>
       </section>
       <Image 
-        src="/assets/images/equipe.png"
+        src="/assets/images/equipe.PNG"
         height={1000}
         width={1000}
         alt='equipe'
