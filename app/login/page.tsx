@@ -23,7 +23,7 @@ const Login = () => {
         </div>
       </section>
       <Image 
-        src="/assets/images/equipe.PNG"
+        src="/images/equipe.PNG"
         height={1000}
         width={1000}
         alt='equipe'
