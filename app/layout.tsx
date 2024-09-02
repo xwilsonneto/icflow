@@ -4,6 +4,7 @@ import "./globals.css";
 import { Provider } from "./Provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import Header from "@/components/Header";
 
 const fontSans = Poppins({ weight: ['400', '500', '600'], variable: '--font-sans', subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+              {children}
           </ThemeProvider>
         </body>
       </Provider>
