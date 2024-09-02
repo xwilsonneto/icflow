@@ -24,7 +24,7 @@ const Admin = async () => {
       <header className='admin-header'>
         <Link href="/" className='cursor-pointer'>
           <Image 
-              src="/iclogobranca.PNG"
+              src="/icons/iclogobranca.png"
               height={32}
               width={162}
               alt='Logo'
@@ -38,7 +38,7 @@ const Admin = async () => {
       <main className='admin-main'>
         <section className='w-full space-y-4'>
           <div className='flex justify-between'>
-            <h1 className='header'>Bem-vinde, wil ✌</h1>
+            <h1 className='header'>Bem-vinde 👋</h1>
           </div>
           <div className='flex justify-between'>
             <p className='text-dark-700'>Acompanhe o resumo das planilhas.</p>

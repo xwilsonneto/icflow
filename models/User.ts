@@ -6,7 +6,6 @@ export interface UserDocument {
   name: string;
   phone: string;
   image: string;
-  googleToken?: string; // Novo campo para armazenar o token do Google
   _id: string;
   createdAt: Date;
   updatedAt: Date;
@@ -36,10 +35,6 @@ const UserSchema = new Schema<UserDocument>({
   phone: {
     type: String,
     default: ""
-  },
-  googleToken: {
-    type: String,
-    default: "",
   },
 },
 {
