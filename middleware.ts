@@ -1,3 +1,4 @@
+// app/middleware.ts
 import { NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { NextRequest } from 'next/server';
@@ -5,22 +6,15 @@ import { NextRequest } from 'next/server';
 export async function middleware(req: NextRequest) {
   const token = await getToken({ req });
 
-  // Permite acesso a arquivos estáticos e recursos essenciais
+  // Permite acesso a arquivos estáticos e outros recursos
   const url = req.nextUrl.clone();
-  if (
-    url.pathname.startsWith('/_next/') ||
-    url.pathname.startsWith('/static/') ||
-    url.pathname.startsWith('/public/') ||
-    url.pathname === '/favicon.ico' ||
-    url.pathname === '/' || // Permite acesso à página de login
-    url.pathname === '/register' // Permite acesso à página de registro
-  ) {
+  if (url.pathname.startsWith('/_next/') || url.pathname.startsWith('/static/') || url.pathname.startsWith('/public/') || url.pathname === '/favicon.ico') {
     return NextResponse.next();
   }
 
-  // Redireciona para a página de login se não houver token
-  if (!token) {
-    return NextResponse.redirect(new URL('/', req.url)); // Redireciona para a página de login
+  // Redireciona para a página de login se não houver token e o caminho não for /login ou /register
+  if (!token && !['/login', '/register'].includes(req.nextUrl.pathname)) {
+    return NextResponse.redirect(new URL('/login', req.url));
   }
 
   return NextResponse.next();

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Payment } from '@/types/payment'; // Ensure this path is correct
+import { Payment } from '@/types/payment';
 
 const { MONGODB_URI } = process.env;
 
@@ -7,7 +7,6 @@ if (!MONGODB_URI) {
   throw new Error("MONGODB_URI must be defined");
 }
 
-// Connect to the database
 export const connectDB = async () => {
   try {
     const { connection } = await mongoose.connect(MONGODB_URI);
@@ -41,6 +40,15 @@ export const getData = async (): Promise<Payment[]> => {
         $project: {
           codigo: 1,
           projeto: 1,
+          proponente: 1,
+          cnpj: 1,
+          login: 1,
+          senha: 1,
+          pastaUrl: 1,
+          homologado: { $ifNull: [{ $arrayElemAt: ["$data.HOMOLOGADO", 0] }, ""] },
+          captado: { $ifNull: [{ $arrayElemAt: ["$data.CAPTADO", 0] }, ""] },
+          porcento: { $ifNull: [{ $arrayElemAt: ["$data.PORCENTO", 0] }, ""] },
+          receitas: { $ifNull: [{ $arrayElemAt: ["$data.RECEITAS", 0] }, ""] },
           lanrp: {
             change: {
               $ifNull: [
@@ -129,6 +137,15 @@ export const getData = async (): Promise<Payment[]> => {
     return results.map((item: any) => ({
       codigo: item.codigo as string,
       projeto: item.projeto as string,
+      proponente: item.proponente as string,
+      cnpj: item.cnpj as string,
+      login: item.login as string,
+      senha: item.senha as string,
+      pastaUrl: item.pastaUrl as string,
+      homologado: item.homologado as string,
+      captado: item.captado as string,
+      porcento: item.porcento as string,
+      receitas: item.receitas as string,
       lanrp: {
         change: item.lanrp.change as number,
         newValue: item.lanrp.newValue as number,
@@ -157,3 +174,4 @@ export const getData = async (): Promise<Payment[]> => {
     return [];
   }
 };
+

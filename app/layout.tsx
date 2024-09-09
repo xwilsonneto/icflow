@@ -4,7 +4,6 @@ import "./globals.css";
 import { Provider } from "./Provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
-import Header from "@/components/Header";
 
 const fontSans = Poppins({ weight: ['400', '500', '600'], variable: '--font-sans', subsets: ["latin"] });
 
@@ -23,18 +22,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Provider>
-        <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>
+      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>
+        <Provider>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
             enableSystem
             disableTransitionOnChange
           >
-              {children}
+            {children}
           </ThemeProvider>
-        </body>
-      </Provider>
+        </Provider>
+      </body>
     </html>
   );
 }

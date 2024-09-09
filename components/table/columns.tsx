@@ -128,7 +128,7 @@ export const columns: ColumnDef<Payment>[] = [
   },
   {
     accessorKey: 'feito',
-    header: 'Lançar RP',
+    header: 'Ok/Feito',
     cell: ({ row }) => {
         const lanrpData = row.original.feito || { change: 0, newValue: 0 }; // Definindo valores padrão
         const changeValue = lanrpData.change !== undefined ? lanrpData.change : 0; // Obter o valor de change

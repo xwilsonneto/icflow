@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import Header from "@/components/Header"; // Ajuste o caminho conforme necessário
-import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { UserNav } from "@/components/navbar/user-nav";
+import { MainNav } from "@/components/navbar/main-nav";
+import TeamSwitcher from "@/components/navbar/team-switcher";
 
 export default function DashboardLayout({
   children,
@@ -10,7 +11,15 @@ export default function DashboardLayout({
 }) {
   return (
     <div className='mx-auto flex max-w-7xl flex-col space-y-14'>
-      <Header />
+      <div className="border-b">
+          <div className="flex h-16 items-center px-4">
+            <TeamSwitcher />
+            <MainNav className="mx-6" />
+            <div className="ml-auto flex items-center space-x-4">
+              <UserNav />
+            </div>
+          </div>
+        </div>
       <main className={cn('min-h-screen bg-dark-300 font-sans antialiased')}>
         {children}
       </main>
